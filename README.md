@@ -34,6 +34,6 @@ Video Output Height
 
 ### Credits
 
-Donald Feury - Original Creator [Support Him On Youtube](https://www.youtube.com/watch?v=ak52RXKfDw8)
-Zulko - moviepy
-Nushan Kodikara - Modifications and maintaing the project
+-   Donald Feury - Original Creator [Support Him On Youtube](https://www.youtube.com/watch?v=ak52RXKfDw8)
+-   Zulko - moviepy
+-   Nushan Kodikara - Modifications and maintaing the project
