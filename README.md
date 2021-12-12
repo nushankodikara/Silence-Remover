@@ -5,7 +5,9 @@ This Script will use python moviepy library with ffmpeg to automatically trim ou
 ## Usage
 
 ```shell
-removeSilence.sh <input-file> <output-file> <cutoff-decible> <ease> <width> <height>
+$ git clone https://github.com/nushankodikara/Silence-Remover
+$ cd Silence-Remover
+$ ./removeSilence.sh <input-file> <output-file> <cutoff-decible> <ease> <width> <height>
 ```
 
 ### Input File
