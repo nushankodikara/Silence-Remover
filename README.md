@@ -1,4 +1,5 @@
 # Silence Remover
+
 > Automatically Trims Silent Parts From Your Videos
 
 This Script will use python moviepy library with ffmpeg to automatically trim out silent sections of a video files. Will be helpful on content creation and editing.
@@ -9,6 +10,12 @@ This Script will use python moviepy library with ffmpeg to automatically trim ou
 $ git clone https://github.com/nushankodikara/Silence-Remover
 $ cd Silence-Remover
 $ ./removeSilence.sh <input-file> <output-file> <cutoff-decible> <ease> <width> <height>
+```
+
+Example
+
+```shell
+$ ./removeSilence.sh input.mp4 output.mp4 -30 0.5 1920 1080
 ```
 
 ### Input File
