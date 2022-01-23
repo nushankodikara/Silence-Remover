@@ -12,6 +12,10 @@ file_in = sys.argv[1]
 file_out = sys.argv[2]
 # Silence timestamps
 silence_file = sys.argv[3]
+# Width of the video
+width = int(sys.argv[4])
+# Height of the video
+height = int(sys.argv[5])
 
 # Ease in duration between cuts
 try:
@@ -20,6 +24,7 @@ except IndexError:
     ease = 0.0
 
 minimum_duration = 1.0
+
 
 def main():
     # number of clips generated
@@ -37,14 +42,14 @@ def main():
         if not line:
             break
 
-        end,duration = line.strip().split()
+        end, duration = line.strip().split()
 
         to = float(end) - float(duration)
 
         start = float(last)
         clip_duration = float(to) - start
         # Clips less than one seconds don't seem to work
-        print("Clip Duration: {} seconds".format(clip_duration))
+        # print("Clip Duration: {} seconds".format(clip_duration))
 
         # if clip_duration < minimum_duration:
         #     continue
@@ -55,27 +60,30 @@ def main():
         if start > ease:
             start -= ease
 
-        print("Clip {} (Start: {}, End: {})".format(count, start, to))
+        # print("Clip {} (Start: {}, End: {})".format(count, start, to))
         clip = video.subclip(start, to)
         clips.append(clip)
         last = end
         count += 1
 
     if full_duration - float(last) > minimum_duration:
-        print("Clip {} (Start: {}, End: {})".format(count, last, 'EOF'))
+        # print("Clip {} (Start: {}, End: {})".format(count, last, 'EOF'))
         clips.append(video.subclip(float(last)-ease))
 
-    processed_video = concatenate_videoclips(clips, method="compose")
-    processed_video.write_videofile(
+    processed_video = concatenate_videoclips(
+        clips, method="compose")
+    processed_video.resize((width, height)).write_videofile(
         file_out,
-        fps=60,
+        fps=30,
         preset='ultrafast',
         codec='libx264',
         audio_codec='aac',
         threads=2,
+        verbose=False
     )
 
     in_handle.close()
     video.close()
+
 
 main()

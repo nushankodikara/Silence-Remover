@@ -9,38 +9,26 @@ This Script will use python moviepy library with ffmpeg to automatically trim ou
 ```shell
 $ git clone https://github.com/nushankodikara/Silence-Remover
 $ cd Silence-Remover
-$ ./removeSilence.sh <input-file> <output-file> <cutoff-decible> <ease> <width> <height>
+$ ./removeSilence.sh <THRESH> <DURATION> <WIDTH> <HEIGHT> <INPUT_FILE_1> <INPUT_FILE_2> ...
+
+```
+
+```
+options:
+THRESH            Minimum Audio threshold in dB
+DURATION          Minimum Silence duration in seconds
+WIDTH             Width of the output video
+HEIGHT            Height of the output video
+INPUT_FILE_X      Video Files to be processed
 ```
 
 Example
 
 ```shell
-$ ./removeSilence.sh input.mp4 output.mp4 -30 0.5 1920 1080
+$ ./removeSilence.sh -30 0.5 1920 1080 input1.mp4 input2.mp4 input3.mp4
 ```
 
-### Input File
-
-This can be any video file.
-
-### Output File
-
-Add the path and file name to export the vide.
-
-### Cutoff Decible
-
-Here you can add the threshold for marking the clip as silent. All the parts below this limit will be eleminated ( reccomended -30)
-
-### Ease
-
-Ease out the cutting, here add a value greater than 0.1
-
-### Width
-
-Video Output Width
-
-### Height
-
-Video Output Height
+Above code will automatically trim out silent parts of the video files and save the output in the same folder named with a suffix of "\_out.mp4"
 
 ### Credits
 
